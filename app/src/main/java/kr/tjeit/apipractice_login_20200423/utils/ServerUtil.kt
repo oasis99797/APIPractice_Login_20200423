@@ -17,7 +17,7 @@ class ServerUtil {
 //        도메인 (api.naver.com 등) or IP주소 (http://172.30.1.56:5000/) 등
 //        메인 주소를 저장해두는 변수.
 //        val BASE_URL = "http://api.tjeit.com" // 라이브주소
-        val BASE_URL = "http://http://172.30.1.56:5000/" // 개발용주소
+        val BASE_URL = "http://172.30.1.56:5000/" // 개발용주소
 
         //        필요한 변수를 넣는 요령.
 //        화면에서 => 서버로 전달해야하는 데이터.
