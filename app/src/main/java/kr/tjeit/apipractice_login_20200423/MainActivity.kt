@@ -3,6 +3,7 @@ package kr.tjeit.apipractice_login_20200423
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.tjeit.apipractice_login_20200423.utils.ServerUtil
 import org.json.JSONObject
@@ -29,8 +30,21 @@ class MainActivity : BaseActivity() {
 //                    실제로 응답을 받은걸 분석해서 => 대응
 
 //                    임시로 서버 응답 확인 하기 위한 코드
-                    Log.d("서버응답JSON", json.toString())
+//                    Log.d("서버응답JSON", json.toString())
 
+                    val code = json.getInt("code")
+
+                    if (code == 200) {
+//                        로그인 성공
+                    }
+                    else {
+                        val message = json.getString("message")
+
+                        runOnUiThread {
+                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
 
                 }
 
