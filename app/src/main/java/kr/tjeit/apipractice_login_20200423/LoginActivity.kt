@@ -1,6 +1,8 @@
 package kr.tjeit.apipractice_login_20200423
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
 import kr.tjeit.apipractice_login_20200423.utils.ServerUtil
@@ -28,12 +30,21 @@ class LoginActivity : BaseActivity() {
 //                    실제로 응답을 받은걸 분석해서 => 대응
 
 //                    임시로 서버 응답 확인 하기 위한 코드
-//                    Log.d("서버응답JSON", json.toString())
+                    Log.d("서버응답JSON", json.toString())
 
                     val code = json.getInt("code")
 
                     if (code == 200) {
 //                        로그인 성공
+
+                        val data = json.getJSONObject("data")
+                        val user = data.getJSONObject("user")
+                        val name = user.getString("name")
+
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        myIntent.putExtra("userName", name)
+                        startActivity(myIntent)
+
                     }
                     else {
                         val message = json.getString("message")
